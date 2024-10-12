@@ -15,6 +15,9 @@ router.get('/all', billController.getAllBills);
 //عرض حسب نوع الفاتوره
 router.get('/all/:type',billController.getBillsByType);
 
+// إضافة مسار بحث
+router.get('/search', billController.getSearchDate);
+  
 
 router.get('/upload-excel',billController.getUpload);
 // صفحة انشاء فاتوره جديده

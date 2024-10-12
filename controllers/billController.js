@@ -47,7 +47,11 @@ exports.getBillsByType = async (req, res) => {
     res.status(404).send('not found');
   }
 };
-
+exports.getSearchDate = async (req, res) => {
+  const { searchDate } = req.query;
+  const bills = await Bill.find({ billDate: new Date(searchDate) });
+  res.render('bills/index', { bills });
+}
 // عرض صفحة إنشاء فاتورة جديدة
 exports.getCreateBill = async (req, res) => {
   try {

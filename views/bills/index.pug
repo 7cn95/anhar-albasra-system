@@ -5,9 +5,15 @@ block content
     include ../layouts/sidebar
     div(class="container mx-auto py-12 max-w-6xl")
       
+      
       // زر لإضافة فاتورة جديدة
-      div(class="flex justify-end mb-6")
-        a(href="/bills/create", class="text-white bg-cyan-600 p-3 px-6 rounded-lg hover:bg-cyan-700 transition duration-300 shadow-lg") إضافة فاتورة جديدة
+      div(class="flex justify-between mb-6")
+        // حقل البحث بواسطة التاريخ
+        form(action="/bills/search" method="GET" class="flex justify-start ")
+          input(type="date" name="searchDate" required class="p-2 border rounded-md")
+          button(type="submit" class="ml-4 text-white bg-teal-600 p-3 rounded-lg hover:bg-teal-700 transition duration-300") بحث بواسطة التاريخ
+
+        a(href="/bills/create", class="text-white bg-cyan-600 py-3 px-6 rounded-lg hover:bg-cyan-700 transition duration-300 shadow-lg") إضافة فاتورة جديدة
 
       // جدول الفواتير
       div(class="overflow-x-auto")
