@@ -50,7 +50,7 @@ exports.getBillsByType = async (req, res) => {
 exports.getSearchDate = async (req, res) => {
   const { searchDate } = req.query;
   const bills = await Bill.find({ billDate: new Date(searchDate) });
-  res.render('bills/index', { bills });
+  res.render('bills/index', { bills ,status:"not all"});
 }
 // عرض صفحة إنشاء فاتورة جديدة
 exports.getCreateBill = async (req, res) => {

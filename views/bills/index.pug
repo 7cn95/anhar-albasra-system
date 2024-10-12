@@ -12,7 +12,8 @@ block content
         form(action="/bills/search" method="GET" class="flex justify-start ")
           input(type="date" name="searchDate" required class="p-2 border rounded-md")
           button(type="submit" class="ml-4 text-white bg-teal-600 p-3 rounded-lg hover:bg-teal-700 transition duration-300") بحث بواسطة التاريخ
-
+        if status
+          a(href="/bills/all", class="text-white bg-cyan-600 py-3 px-6 rounded-lg hover:bg-cyan-700 transition duration-300 shadow-lg") عرض الكل
         a(href="/bills/create", class="text-white bg-cyan-600 py-3 px-6 rounded-lg hover:bg-cyan-700 transition duration-300 shadow-lg") إضافة فاتورة جديدة
 
       // جدول الفواتير
