@@ -142,7 +142,7 @@ exports.updateBill = async (req, res) => {
       details,
       note
     });
-    res.redirect('/bills');
+    res.redirect('/bills/'+billId);
   } catch (error) {
     console.error(error);
     res.redirect(`/bills/${billId}/edit`);

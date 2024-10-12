@@ -51,11 +51,11 @@ block content
     br
     div(class='ml-3')
       label(for="details" class="block mb-2 text-lg") التفاصيل:
-      input(type="text", name="details", value=bill.details || '', class="w-full p-2 border rounded-md")
+      input(type="text", name="details", value=bill.details, class="w-full p-2 border rounded-md")
     br
     div(class='ml-3')
       label(for="note" class="block mb-2 text-lg") ملاحظة:
-      textarea(type="text", name="note", value=bill.note || '', class="w-full p-2 border rounded-md")
+      textarea(type="text", name="note", value=bill.note, class="w-full p-2 border rounded-md")
     br
     div(class='ml-3')
       label(for="vehicleNumber" class="block mb-2 text-lg") رقم المركبة (فقط للصيانة):
