@@ -7,7 +7,7 @@ block content
   // عرض تفاصيل الفاتورة
   div(class="bg-gray-100 p-6 rounded-md shadow-md")
     p(class="text-lg font-bold") تاريخ الفاتورة: 
-    span= bill.bill_date.toDateString()
+    span= bill.billDate.toDateString()
 
     p(class="text-lg font-bold mt-2") الطرف: 
     span= bill.party
@@ -28,10 +28,10 @@ block content
     span= bill.count
 
     p(class="text-lg font-bold mt-2") السعر بالدينار العراقي: 
-    span= bill.diq_price
+    span= bill.diqPrice
 
     p(class="text-lg font-bold mt-2") السعر بالدولار الأمريكي: 
-    span= bill.usd_price
+    span= bill.usdPrice
 
     p(class="text-lg font-bold mt-2") التفاصيل: 
     span= bill.detail || "لا توجد تفاصيل"
