@@ -106,10 +106,10 @@ exports.createBill = async (req, res) => {
   });
   try {
     await bill.save();
-    res.redirect('/bills');
+    res.redirect('/bills/all');
   } catch (error) {
     console.error(error);
-    res.render('bills/bills-dashboard', { error: 'خطأ في إنشاء الفاتورة' });
+    res.render('bills/', { error: 'خطأ في إنشاء الفاتورة' });
   }
 };
 
