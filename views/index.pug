@@ -1,0 +1,20 @@
+extends layouts/main
+block header 
+  // البار العلوي
+  include layouts/header
+block content
+  // المحتوى الرئيسي
+  div(class="flex")
+    // البار الجانبي
+    include layouts/sidebar
+
+    // الجزء الرئيسي
+    section(class="w-4/5 p-6")
+      // قسم الإحصائيات اليومية
+      include dashboard/daily-stat
+      
+      // قسم الإحصائيات الشهرية
+      include dashboard/monthly-stats
+      
+      // عرض آخر الصفوف المدخلة
+      include dashboard/recent-entries

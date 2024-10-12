@@ -1,0 +1,39 @@
+extends ../layouts/main.pug
+
+block content
+  h1(class="text-2xl font-bold mb-8") تعديل الأنقاض
+
+  form(action=`/debris/${debris._id}/edit` method="POST" class="space-y-6")
+    div
+      label(for="receipt_number" class="block mb-2") رقم الوصل
+      input(type="text" name="receipt_number" value=debris.receipt_number required class="w-full border p-3 rounded-md")
+
+    div
+      label(for="driver_name" class="block mb-2") اسم السائق
+      input(type="text" name="driver_name" value=debris.driver_name required class="w-full border p-3 rounded-md")
+
+    div
+      label(for="vehicle_number" class="block mb-2") رقم المركبة
+      input(type="text" name="vehicle_number" value=debris.vehicle_number required class="w-full border p-3 rounded-md")
+
+    div
+      label(for="type" class="block mb-2") نوع المواد
+      input(type="text" name="type" value=debris.type required class="w-full border p-3 rounded-md")
+
+    div
+      label(for="quantity" class="block mb-2") العدد
+      input(type="number" name="quantity" value=debris.quantity required class="w-full border p-3 rounded-md")
+
+    div
+      label(for="date" class="block mb-2") التاريخ
+      input(type="date" name="date" value=debris.date.toISOString().substring(0, 10) required class="w-full border p-3 rounded-md")
+
+    div
+      label(for="time" class="block mb-2") الوقت
+      input(type="time" name="time" value=debris.time required class="w-full border p-3 rounded-md")
+
+    div
+      label(for="amount" class="block mb-2") المبلغ
+      input(type="number" name="amount" value=debris.amount required class="w-full border p-3 rounded-md")
+
+    button(type="submit" class="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 transition-all") حفظ التعديلات

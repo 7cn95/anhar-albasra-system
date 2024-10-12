@@ -1,0 +1,39 @@
+//- extends layouts/main.pug
+extends ../layouts/main
+
+block content
+  div(class="container mx-auto py-8")
+    h1(class="text-3xl font-bold mb-4") المواد
+    a(href="/materials/new" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded") إضافة مادة جديدة
+
+    if materials.length
+      table(class="min-w-full bg-white border border-gray-200 mt-6")
+        thead
+          tr(class="bg-gray-100 border-b")
+            th(class="px-6 py-3 text-right text-gray-600") اسم السائق
+            th(class="px-6 py-3 text-right text-gray-600") رقم الوصل
+            th(class="px-6 py-3 text-right text-gray-600") نوع المواد
+            th(class="px-6 py-3 text-right text-gray-600") رقم المركبة
+            th(class="px-6 py-3 text-right text-gray-600") الكمية
+            th(class="px-6 py-3 text-right text-gray-600") السعر
+            th(class="px-6 py-3 text-right text-gray-600") التاريخ
+            th(class="px-6 py-3 text-right text-gray-600") العمليات
+        tbody
+          each material in materials
+            tr(class="border-b hover:bg-gray-100")
+              td(class="px-6 py-3")= material.driver_name
+              td(class="px-6 py-3")= material.receipt_number
+              td(class="px-6 py-3")= material.material_type
+              td(class="px-6 py-3")= material.vehicle_number
+              td(class="px-6 py-3")= material.quantity
+              td(class="px-6 py-3")= material.price
+              td(class="px-6 py-3")= material.material_date.toDateString()
+              td(class="px-6 py-3 flex space-x-4 justify-between")
+                a(href=`/materials/${material._id}` class="text-blue-500 hover:text-blue-700") عرض    
+                  i(class="fa-solid fa-circle-info")
+                a(href=`/materials/${material._id}/edit` class="text-yellow-500 hover:text-yellow-700") تعديل     
+                  i(class="fa-solid fa-edit")
+                //- form(action=`/materials/${material._id}?_method=DELETE`, method="POST", class="inline")
+                //-   button(type="submit" class="text-red-500 hover:text-red-700") حذف
+    else
+      p(class="mt-4 text-gray-600") لا توجد مواد مضافة بعد

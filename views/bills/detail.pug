@@ -1,0 +1,67 @@
+extends ../layouts/main.pug
+
+block content
+  
+  h2(class="text-2xl mb-4") تفاصيل الفاتورة
+
+  // عرض تفاصيل الفاتورة
+  div(class="bg-gray-100 p-6 rounded-md shadow-md flex war")
+    br
+    div
+      p(class="text-lg font-bold") تاريخ الفاتورة: 
+      span= bill.billDate.toDateString()
+    br
+    div
+      p(class="text-lg font-bold mt-2") الطرف: 
+      span= bill.party
+    br
+    div
+      p(class="text-lg font-bold mt-2") نوع الفاتورة: 
+      span= bill.type
+    br
+    div
+      p(class="text-lg font-bold mt-2") المسؤول: 
+      span= bill.responsible
+    br
+    div
+      p(class="text-lg font-bold mt-2") القيد: 
+      span= bill.restriction
+    br
+    div
+      p(class="text-lg font-bold mt-2") الاسم: 
+      span= bill.name
+    br
+    div
+      p(class="text-lg font-bold mt-2") العدد: 
+      span= bill.count
+    br
+    div
+      p(class="text-lg font-bold mt-2") السعر بالدينار العراقي: 
+      span= bill.diqPrice
+    br
+    div
+      p(class="text-lg font-bold mt-2") السعر بالدولار الأمريكي: 
+      span= bill.usdPrice
+    br
+    div
+      p(class="text-lg font-bold mt-2") التفاصيل: 
+      span= bill.details || "لا توجد تفاصيل"
+    br
+    div
+      p(class="text-lg font-bold mt-2") ملاحظة: 
+      span= bill.note || "لا توجد ملاحظات"
+    br
+    div
+      p(class="text-lg font-bold mt-2") رقم المركبة: 
+      span= bill.vehicleNumber || "لا يوجد رقم مركبة"
+
+  // أزرار العمليات
+  div(class="mt-6 space-x-4")
+    a(href=`/bills/${bill._id}/edit` class="inline-block ml-1 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600") 
+      i(class="fa-solid fa-edit mr-2") تعديل الفاتورة
+    form(action=`/bills/${bill._id}/delete`, method="POST" class="inline-block")
+      button(type="submit" class="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600") 
+        i(class="fa-solid fa-trash mr-2") حذف الفاتورة
+    a(href=`/bills/${bill._id}/invoice` class="mr-4 bg-cyan-600 text-white p-2 pr-5 pl-5 rounded-lg") 
+      i(class="fa-solid fa-print mr-2") طباعة
+    a(href="/bills" class="inline-block bg-gray-300 text-black py-2 px-4 rounded hover:bg-gray-400") العودة إلى القائمة

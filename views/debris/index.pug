@@ -1,0 +1,35 @@
+extends ../layouts/main.pug
+
+block content
+  h1(class="text-2xl font-bold mb-8") قائمة الأنقاض
+
+  // زر لإضافة أنقاض جديدة
+  a(href="/debris/create" class="bg-blue-500 text-white px-4 py-2 rounded-lg mb-4 inline-block hover:bg-blue-600 transition-all") إضافة أنقاض جديدة
+
+  // جدول الأنقاض
+  table(class="min-w-full bg-white shadow-md rounded-lg mt-6")
+    thead
+      tr
+        th(class="text-right p-4") رقم الوصل
+        th(class="text-right p-4") اسم السائق
+        th(class="text-right p-4") رقم المركبة
+        th(class="text-right p-4") النوع
+        th(class="text-right p-4") العدد
+        th(class="text-right p-4") التاريخ
+        th(class="text-right p-4") العمليات
+    tbody
+      each debris in debrisList
+        tr(class="border-b")
+          td(class="p-4")= debris.receipt_number
+          td(class="p-4")= debris.driver_name
+          td(class="p-4")= debris.vehicle_number
+          td(class="p-4")= debris.type
+          td(class="p-4")= debris.quantity
+          td(class="p-4")= debris.date.toLocaleDateString()
+          td(class="p-4 flex space-x-4 justify-around")
+            a(href=`/debris/${debris._id}` class="text-blue-500 hover:underline") التفاصيل 
+              i(class="fa-solid fa-circle-info")
+            a(href=`/debris/${debris._id}/edit` class="text-green-500 hover:underline") تعديل   
+              i(class="fa-solid fa-edit")
+            //- form(action=`/debris/${debris._id}/delete`, method="POST")
+            //-   button(type="submit" class="text-red-500 hover:underline") حذف

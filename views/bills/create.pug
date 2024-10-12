@@ -1,0 +1,65 @@
+extends ../layouts/main.pug
+
+block content
+  h2(class="text-2xl mb-4") إضافة فاتورة جديدة
+
+  form(action="/bills" method="POST" class="flex flex-wrap overflow-scroll space-y-4 bg-gray-50 p-6 rounded-md shadow-md gred")
+    br
+    div(class="ml-3")
+      label(for="billDate" class="block mb-2 text-lg ") تاريخ الفاتورة:
+      input(type="date", name="billDate", required class="p-2 border rounded-md")
+    br
+    div(class="ml-3")
+      label(for="party" class="block mb-2 text-lg") الطرف:
+      input(type="text", name="party", required class="p-2 border rounded-md")
+    br
+    div(class="ml-3")
+      label(for="type" class="block mb-2 text-lg") نوع الفاتورة:
+      select(name="type" required class="p-2 border rounded-md")
+        option(value="الصيانه") صيانة
+        option(value="المشتريات") مشتريات
+        option(value="الادارة") الادارة
+        option(value="الرواتب") رواتب
+        option(value="الكونكريت") الكونكريت
+        option(value="الاسفلت") أسفلت
+        option(value="الوقود") الوقود
+    br
+    div(class="ml-3")
+      label(for="responsible" class="block mb-2 text-lg") المسؤول:
+      input(type="text", name="responsible", required class="w-full p-2 border rounded-md")
+    br
+    div(class="ml-3")
+      label(for="restriction" class="block mb-2 text-lg") القيد:
+      input(type="text", name="restriction", required class="w-full p-2 border rounded-md")
+    br
+    div(class="ml-3")
+      label(for="name" class="block mb-2 text-lg") الاسم:
+      input(type="text", name="name", required class="w-full p-2 border rounded-md")
+    br
+    div(class="ml-3")
+      label(for="count" class="block mb-2 text-lg") العدد:
+      input(type="number", name="count", required min="1" class="w-full p-2 border rounded-md")
+    br
+    div(class="ml-3")
+      label(for="diqPrice" class="block mb-2 text-lg") السعر بالدينار العراقي:
+      input(type="number", name="diqPrice", required min="0" class="w-full p-2 border rounded-md")
+    br
+    div(class="ml-3")
+      label(for="usdPrice" class="block mb-2 text-lg") السعر بالدولار الأمريكي:
+      input(type="number", name="usdPrice",value=0,  min="0" class="w-full p-2 border rounded-md")
+    br
+    div(class="ml-3")
+      label(for="details" class="block mb-2 text-lg") التفاصيل:
+      input(type="text", name="details" class="w-full p-2 border rounded-md")
+    br
+    div(class="ml-3")
+      label(for="note" class="block mb-2 text-lg") ملاحظة:
+      input(type="text", name="note" class="w-full p-2 border rounded-md" value="")
+    br
+    div(class="ml-3")
+      label(for="vehicleNumber" class="block mb-2 text-lg") رقم المركبة (فقط للصيانة):
+      input(type="text", name="vehicleNumber" class="w-full p-2 border rounded-md")
+
+    button(type="submit" class="w-full bg-teal-500 text-white p-3 rounded-md mt-4") إضافة الفاتورة
+
+  a(href="/bills" class="block text-teal-600 mt-4") العودة إلى القائمة

@@ -1,0 +1,31 @@
+// sidebar.pug
+aside(class="w-1/4 max-w-[16vw] bg-cyan-800 min-h-screen p-6 text-[#ffffff] text-xl pt-30")
+  nav(class="flex flex-col justify-center items-center")
+    img(src="/img/anhar albasra logo.png", class="w-28  pb-24", srcset="")
+    ul(class="space-y-4")
+      li
+        a(href="/" class="flex items-center space-x-3 hover:text-cyan-100 p-3 rounded-lg")
+          i(class="fas fa-home") 
+          span الرئيسية
+      li
+        a(href="/bills" class="flex items-center space-x-3 hover:text-cyan-100 p-3 rounded-lg")
+          i(class="fas fa-file-invoice") 
+          span الفواتير
+      li
+        a(href="/materials" class="flex items-center space-x-3 hover:text-cyan-100 p-3 rounded-lg")
+          i(class="fas fa-box-open") 
+          span المواد
+      li
+        a(href="/debris" class="flex items-center space-x-3 hover:text-cyan-100 p-3 rounded-lg")
+          i(class="fas fa-dumpster") 
+          span الأنقاض
+      li
+        a(href="/accounting" class="flex items-center space-x-3 hover:text-cyan-100 p-3 rounded-lg ")
+          i(class="fas fa-calculator ml-2") 
+          span المحاسب عليه
+    // زر الإعدادات
+    //- div(class="mt-auto")
+    //-   a(href="/settings" class="flex items-center space-x-3 hover:bg-cyan-600 p-3 rounded-lg")
+    //-     i(class="fas fa-cog")
+    //-     br 
+    //-     span الإعدادات

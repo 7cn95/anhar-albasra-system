@@ -1,0 +1,42 @@
+//- extends layouts/main.pug
+extends ../layouts/main
+
+block content
+  div(class="container mx-auto py-8")
+    h1(class="text-2xl font-bold mb-6") تعديل المادة
+
+    form(action=`/materials/${material._id}/edit`, method="POST", class="space-y-4")
+      div
+        label(for="driver_name" class="block text-lg font-medium text-gray-700") اسم السائق:
+        input(type="text", name="driver_name", value=material.driver_name, required, class="mt-1 block w-full p-2 border border-gray-300 rounded-md")
+      
+      div
+        label(for="receipt_number" class="block text-lg font-medium text-gray-700") رقم الوصل:
+        input(type="text", name="receipt_number", value=material.receipt_number, required, class="mt-1 block w-full p-2 border border-gray-300 rounded-md")
+
+      div
+        label(for="material_type" class="block text-lg font-medium text-gray-700") نوع المواد:
+        input(type="text", name="material_type", value=material.material_type, required, class="mt-1 block w-full p-2 border border-gray-300 rounded-md")
+
+      div
+        label(for="vehicle_number" class="block text-lg font-medium text-gray-700") رقم المركبة:
+        input(type="text", name="vehicle_number", value=material.vehicle_number, required, class="mt-1 block w-full p-2 border border-gray-300 rounded-md")
+
+      div
+        label(for="quantity" class="block text-lg font-medium text-gray-700") الكمية:
+        input(type="number", name="quantity", value=material.quantity, required, class="mt-1 block w-full p-2 border border-gray-300 rounded-md")
+
+      div
+        label(for="price" class="block text-lg font-medium text-gray-700") السعر:
+        input(type="number", name="price", value=material.price, required, class="mt-1 block w-full p-2 border border-gray-300 rounded-md")
+
+      div
+        label(for="material_date" class="block text-lg font-medium text-gray-700") التاريخ:
+        input(type="date", name="material_date", value=material.material_date.toISOString().split('T')[0], required, class="mt-1 block w-full p-2 border border-gray-300 rounded-md")
+
+      div
+        label(for="details" class="block text-lg font-medium text-gray-700") التفاصيل:
+        textarea(name="details", class="mt-1 block w-full p-2 border border-gray-300 rounded-md")= material.details
+
+      button(type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded") حفظ التعديلات
+      a(href="/materials" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded ml-4") إلغاء

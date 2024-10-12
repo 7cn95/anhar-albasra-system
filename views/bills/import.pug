@@ -1,0 +1,8 @@
+extends ../layouts/main
+
+block content
+include ../layouts/sidebar
+  h1 رفع ملف Excel واستيراد البيانات
+  form(action="/bills/import" method="POST" enctype="multipart/form-data")
+    input(type="file" name="excelFile" accept=".xlsx")
+    button(type="submit") رفع واستيراد

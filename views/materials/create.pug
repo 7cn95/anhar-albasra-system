@@ -1,0 +1,44 @@
+//- extends layouts/main.pug
+extends ../layouts/main
+
+block content
+  div(class="container mx-auto py-12 max-w-4xl")
+    h1(class="text-3xl font-bold mb-6 text-gray-700") إضافة مادة جديدة
+
+    form(action="/materials", method="POST", class="space-y-6 bg-white shadow-lg rounded-lg p-8 border border-gray-200")
+      div
+        label(for="driver_name" class="block text-lg font-medium text-gray-700 mb-2") اسم السائق:
+        input(type="text", name="driver_name", placeholder="أدخل اسم السائق", required, class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:outline-none")
+      
+      div
+        label(for="receipt_number" class="block text-lg font-medium text-gray-700 mb-2") رقم الوصل:
+        input(type="text", name="receipt_number", placeholder="أدخل رقم الوصل", required, class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:outline-none")
+      
+      div
+        label(for="material_type" class="block text-lg font-medium text-gray-700 mb-2") نوع المواد:
+        input(type="text", name="material_type", placeholder="أدخل نوع المواد", required, class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:outline-none")
+
+      div
+        label(for="vehicle_number" class="block text-lg font-medium text-gray-700 mb-2") رقم المركبة:
+        input(type="text", name="vehicle_number", placeholder="أدخل رقم المركبة", required, class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:outline-none")
+
+      div
+        label(for="quantity" class="block text-lg font-medium text-gray-700 mb-2") الكمية:
+        input(type="number", name="quantity", placeholder="أدخل الكمية", required, class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:outline-none")
+
+      div
+        label(for="price" class="block text-lg font-medium text-gray-700 mb-2") السعر:
+        input(type="number", name="price", placeholder="أدخل السعر", required, class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:outline-none")
+
+      div
+        label(for="material_date" class="block text-lg font-medium text-gray-700 mb-2") التاريخ:
+        input(type="date", name="material_date", required, class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:outline-none")
+
+      div
+        label(for="details" class="block text-lg font-medium text-gray-700 mb-2") التفاصيل:
+        textarea(name="details", placeholder="أدخل تفاصيل إضافية", class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:outline-none") تفاصيل المادة...
+
+      //- أزرار الإرسال والإلغاء
+      div(class="flex space-x-4")
+        button(type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg shadow-md transition duration-300 ease-in-out") إضافة المادة
+        a(href="/materials" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-6 rounded-lg shadow-md transition duration-300 ease-in-out") إلغاء

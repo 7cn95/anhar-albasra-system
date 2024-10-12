@@ -1,0 +1,28 @@
+
+
+@import url('./fontawesome-free/css/all.css'); 
+@font-face {
+    font-family: 'codoba font';
+    src: url('/font/newfont.ttf');
+}
+
+*{
+    font-family: 'codoba font';
+}
+
+
+
+li{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.radius{
+
+    border-radius: 24px;
+}
+
+.thr{
+    padding: 1.4rem;
+}

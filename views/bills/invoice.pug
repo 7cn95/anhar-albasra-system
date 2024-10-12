@@ -1,0 +1,48 @@
+extends ../layouts/invoice-layout.pug
+
+block content
+  
+  h2(class="text-2xl mb-4",onload(window.print())) تفاصيل الفاتورة
+
+  // عرض تفاصيل الفاتورة
+  div(class="bg-gray-100 p-6 rounded-md shadow-md")
+    p(class="text-lg font-bold") تاريخ الفاتورة: 
+    span= bill.bill_date.toDateString()
+
+    p(class="text-lg font-bold mt-2") الطرف: 
+    span= bill.party
+
+    p(class="text-lg font-bold mt-2") نوع الفاتورة: 
+    span= bill.type
+
+    p(class="text-lg font-bold mt-2") المسؤول: 
+    span= bill.responsible
+
+    p(class="text-lg font-bold mt-2") القيد: 
+    span= bill.restriction
+
+    p(class="text-lg font-bold mt-2") الاسم: 
+    span= bill.name
+
+    p(class="text-lg font-bold mt-2") العدد: 
+    span= bill.count
+
+    p(class="text-lg font-bold mt-2") السعر بالدينار العراقي: 
+    span= bill.diq_price
+
+    p(class="text-lg font-bold mt-2") السعر بالدولار الأمريكي: 
+    span= bill.usd_price
+
+    p(class="text-lg font-bold mt-2") التفاصيل: 
+    span= bill.detail || "لا توجد تفاصيل"
+
+    p(class="text-lg font-bold mt-2") ملاحظة: 
+    span= bill.note || "لا توجد ملاحظات"
+
+    p(class="text-lg font-bold mt-2") رقم المركبة: 
+    span= bill.vhicle_number || "لا يوجد رقم مركبة"
+
+  script.
+      window.onload = function() {
+        window.print();
+      };

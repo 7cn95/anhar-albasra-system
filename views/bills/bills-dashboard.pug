@@ -1,0 +1,45 @@
+extends ../layouts/main
+block header 
+  // البار العلوي
+  include ../layouts/header
+block content
+  // المحتوى الرئيسي
+  div(class="flex")
+    // البار الجانبي
+    include ../layouts/sidebar
+
+    // الجزء الرئيسي
+    div(class="flex justify-evenly items-center  flex-wrap w-[44vw] mt-[4rem] mr-[15rem] ")
+
+        a(href="bills/all/" class="bg-sky-200 text-sky-600 w-44 h-32 rounded-md flex flex-nowrap justify-center items-center ml-8 mb-4")
+            p الجميع
+            
+        a(href="bills/all/الصيانه" class="bg-cyan-200 text-cyan-600 w-44 h-32 rounded-md flex flex-nowrap justify-center items-center ml-8 mb-4")
+            p الصيانه
+            <i class="fa-solid fa-screwdriver-wrench m-4"></i>
+
+        a(href="bills/all/المشتريات" class="bg-red-200 text-red-600 w-44 h-32 rounded-md flex flex-nowrap justify-center items-center ml-8 mb-4")
+            p المشتريات
+            <i class="fa-solid fa-money-bill m-4"></i>
+
+        a(href="bills/all/الادارة" class="bg-orange-200 text-orange-600 w-44 h-32 rounded-md flex flex-nowrap justify-center items-center ml-8 mb-4")
+            p الادارة
+            <i class="fa-solid fa-user-tie m-4"></i>
+
+        a(href="bills/all/الرواتب" class="bg-teal-200 text-teal-600 w-44 h-32 rounded-md flex flex-nowrap justify-center items-center ml-8 mb-4")
+            p الرواتب
+            <i class="fa-solid fa-money-bill m-4"></i>
+
+        a(href="bills/all/الكونكريت" class="bg-stone-200 text-stone-600 w-44 h-32 rounded-md flex flex-nowrap justify-center items-center ml-8 mb-4")
+            p معمل <br> الكونكريت
+            <i class="fa-solid fa-industry m-4"></i>
+
+        a(href="bills/all/الاسفلت" class="bg-neutral-200 text-neutral-600 w-44 h-32 rounded-md flex flex-nowrap justify-center items-center ml-8 mb-4")
+            p معمل <br> الاسفلت
+            <i class="fa-solid fa-industry m-4"></i>
+
+        a(href="bills/all/الوقود" class="bg-violet-200 text-violet-600 w-44 h-32 rounded-md flex flex-nowrap justify-center items-center ml-8 mb-4")
+            p الوقود
+            <i class="fa-solid fa-gas-pump m-4"></i>
+
+        

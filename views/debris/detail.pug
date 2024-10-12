@@ -1,0 +1,21 @@
+extends ../layouts/main.pug
+
+block content
+  h1(class="text-2xl font-bold mb-8") تفاصيل الأنقاض
+
+  div(class="bg-white p-6 rounded-lg shadow-md space-y-4")
+    p(class="text-gray-700") <strong>رقم الوصل:</strong> #{debris.receipt_number}
+    p(class="text-gray-700") <strong>اسم السائق:</strong> #{debris.driver_name}
+    p(class="text-gray-700") <strong>رقم المركبة:</strong> #{debris.vehicle_number}
+    p(class="text-gray-700") <strong>نوع المواد:</strong> #{debris.type}
+    p(class="text-gray-700") <strong>العدد:</strong> #{debris.quantity}
+    p(class="text-gray-700") <strong>التاريخ:</strong> #{debris.date.toDateString()}
+    p(class="text-gray-700") <strong>الوقت:</strong> #{debris.time}
+    p(class="text-gray-700") <strong>المبلغ:</strong> #{debris.amount}
+
+  // أزرار العمليات
+  div(class="flex space-x-4 mt-6 justify-end ")
+    a(href=`/debris/${debris._id}/edit` class="bg-yellow-500 ml-3 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition-all") تعديل
+    form(action=`/debris/${debris._id}/delete`, method="POST")
+      button(type="submit" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-all") حذف
+    button(onclick="window.print()" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-all") طباعة

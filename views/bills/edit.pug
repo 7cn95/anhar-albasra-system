@@ -1,0 +1,66 @@
+extends ../layouts/main.pug
+
+block content
+  h2(class="text-2xl mb-4") تعديل الفاتورة
+
+  form(action=`/bills/${bill._id}/edit`, method="post" class=" flex flex-wrap space-y-4 bg-gray-50 p-6 rounded-md shadow-md")
+    br
+    div(class='ml-3')
+      label(for="billDate" class="block mb-2 text-lg") تاريخ الفاتورة:
+      input(type="date", name="billDate", value=(bill.billDate ? bill.billDate.toISOString().split('T')[0] : ''), required class="w-full p-2 border rounded-md")
+    br
+    div(class='ml-3')
+      label(for="party" class="block mb-2 text-lg") الطرف:
+      input(type="text", name="party", value=bill.party || '', required class="w-full p-2 border rounded-md")
+    br
+    div(class='ml-3')
+      label(for="type" class="block mb-2 text-lg") نوع الفاتورة:
+      select(name="type" required class="w-full p-2 border rounded-md")
+        option(value="الصيانه", selected=bill.type === 'الصيانه') صيانة
+        option(value="المشتريات", selected=bill.type === 'المشتريات') مشتريات
+        option(value="الادارة", selected=bill.type === 'الادارة') الإدارة
+        option(value="الرواتب", selected=bill.type === 'الرواتب') رواتب
+        option(value="الكونكريت", selected=bill.type === 'الكونكريت') الكونكريت
+        option(value="الاسفلت", selected=bill.type === 'الاسفلت') أسفلت
+        option(value="الوقود", selected=bill.type === 'الوقود') الوقود
+
+    br
+    div(class='ml-3')
+      label(for="responsible" class="block mb-2 text-lg") المسؤول:
+      input(type="text", name="responsible", value=bill.responsible || '', required class="w-full p-2 border rounded-md")
+    br
+    div(class='ml-3')
+      label(for="restriction" class="block mb-2 text-lg") القيد:
+      input(type="text", name="restriction", value=bill.restriction || '', required class="w-full p-2 border rounded-md")
+    br
+    div(class='ml-3')
+      label(for="name" class="block mb-2 text-lg") الاسم:
+      input(type="text", name="name", value=bill.name || '', required class="w-full p-2 border rounded-md")
+    br
+    div(class='ml-3')
+      label(for="count" class="block mb-2 text-lg") العدد:
+      input(type="number", name="count", value=bill.count || 1, min="1", required class="w-full p-2 border rounded-md")
+    br
+    div(class='ml-3')
+      label(for="diqPrice" class="block mb-2 text-lg") السعر بالدينار العراقي:
+      input(type="number", name="diqPrice", value=bill.diqPrice || 0, min="0", required class="w-full p-2 border rounded-md")
+    br
+    div(class='ml-3')
+      label(for="usdPrice" class="block mb-2 text-lg") السعر بالدولار الأمريكي:
+      input(type="number", name="usdPrice", value=bill.usdPrice || 0, min="0", required class="w-full p-2 border rounded-md")
+    br
+    div(class='ml-3')
+      label(for="details" class="block mb-2 text-lg") التفاصيل:
+      input(type="text", name="details", value=bill.details || '', class="w-full p-2 border rounded-md")
+    br
+    div(class='ml-3')
+      label(for="note" class="block mb-2 text-lg") ملاحظة:
+      textarea(type="text", name="note", value=bill.note || '', class="w-full p-2 border rounded-md")
+    br
+    div(class='ml-3')
+      label(for="vehicleNumber" class="block mb-2 text-lg") رقم المركبة (فقط للصيانة):
+      input(type="text", name="vehicleNumber", value=bill.vehicleNumber || '', class="w-full p-2 border rounded-md")
+
+    button(type="submit" class="w-full bg-teal-500 text-white p-3 rounded-md mt-4") تعديل الفاتورة
+
+  a(href="/bills" class="block text-teal-600 mt-4") العودة إلى القائمة

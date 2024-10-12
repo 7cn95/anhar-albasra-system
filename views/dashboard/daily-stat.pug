@@ -1,0 +1,23 @@
+// dailyStats.pug
+p الاحصائيات اليوميه
+br
+div(class="grid grid-cols-4 gap-6 mb-6")
+  // صندوق الفواتير
+  div(class="bg-white p-4 shadow-md rounded-lg flex flex-col items-center")
+    i(class="fas fa-file-invoice text-red-500 text-3xl")
+    span.text-xl.mt-3 100 فاتورة
+  // صندوق المواد
+  div(class="bg-white p-4 shadow-md rounded-lg flex flex-col items-center")
+    i(class="fas fa-box-open text-blue-500 text-3xl")
+    span.text-xl.mt-3 200 مادة
+  // صندوق الأنقاض
+  div(class="bg-white p-4 shadow-md rounded-lg flex flex-col items-center")
+    i(class="fas fa-dumpster text-green-600 text-3xl")
+    span.text-xl.mt-3 150 أنقاض
+  // صندوق المحاسب عليه
+  div(class="bg-white p-4 shadow-md rounded-lg flex flex-col items-center")
+    i(class="fas fa-calculator text-orange-500 text-3xl")
+    span.text-xl.mt-3 50 محاسب عليه
+
+hr
+br
