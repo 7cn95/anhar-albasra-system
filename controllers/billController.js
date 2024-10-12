@@ -160,7 +160,7 @@ exports.deleteBill = async (req, res) => {
     if (!bill) {
       return res.status(404).send('الفاتورة غير موجودة');
     }
-    res.redirect('/bills');
+    res.redirect('/bills/all');
   } catch (error) {
     res.status(500).send('خطأ في حذف الفاتورة');
   }
