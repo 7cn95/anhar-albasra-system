@@ -24,7 +24,7 @@ router.get('/upload-excel',billController.getUpload);
 router.get('/create', billController.getCreateBill);
 
 // ارجاع كم فاتوره تمت اليوم 
-router.get('/dailly',billController.getDailly);
+//router.get('/dailly',billController.getDailly);
 
 //// get:id
 // عرض تفاصيل فاتورة معينة

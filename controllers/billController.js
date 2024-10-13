@@ -3,7 +3,7 @@ const importExcelToMongo = require('../utils/dataImport');
 const path = require('path');
 
 // دالة استيراد البيانات من Excel
-exports.importFromExcel = async (req, res) => {
+importFromExcel = async (req, res) => {
   console.log("import");
   
   try {
@@ -20,7 +20,7 @@ exports.importFromExcel = async (req, res) => {
 };
 
 // عرض صفحة أنواع الفواتير
-exports.getBillsType = async (req, res) => {
+getBillsType = async (req, res) => {
   try {
     res.render('bills/bills-dashboard', { title: "نوع الفاتورة" });
   } catch (error) {
@@ -29,7 +29,7 @@ exports.getBillsType = async (req, res) => {
 };
 
 // عرض كل الفواتير
-exports.getAllBills = async (req, res) => {
+getAllBills = async (req, res) => {
   try {
     const bills = await Bill.find();
     res.render('bills/index', { title: 'قائمة الفواتير', bills });
@@ -39,7 +39,7 @@ exports.getAllBills = async (req, res) => {
 };
 
 // عرض الفواتير حسب النوع
-exports.getBillsByType = async (req, res) => {
+getBillsByType = async (req, res) => {
   try {
     const bills = await Bill.find({ type: req.params.type });
     res.render('bills/index', { title: `فواتير ${req.params.type}`, bills });
@@ -47,13 +47,13 @@ exports.getBillsByType = async (req, res) => {
     res.status(404).send('not found');
   }
 };
-exports.getSearchDate = async (req, res) => {
+getSearchDate = async (req, res) => {
   const { searchDate } = req.query;
   const bills = await Bill.find({ billDate: new Date(searchDate) });
   res.render('bills/index', { bills ,status:"not all"});
 }
 // عرض صفحة إنشاء فاتورة جديدة
-exports.getCreateBill = async (req, res) => {
+getCreateBill = async (req, res) => {
   try {
     res.render('bills/create', { title: 'إنشاء فاتورة جديدة' });
   } catch (error) {
@@ -62,7 +62,7 @@ exports.getCreateBill = async (req, res) => {
 };
 
 // عرض فاتورة معينة
-exports.getBillById = async (req, res) => {
+getBillById = async (req, res) => {
   try {
     const bill = await Bill.findById(req.params.id);
     if (!bill) {
@@ -75,7 +75,7 @@ exports.getBillById = async (req, res) => {
 };
 
 // عرض فاتورة بشكل الفاتورة الكاملة
-exports.getBillByIdInvoice = async (req, res) => {
+getBillByIdInvoice = async (req, res) => {
   try {
     const bill = await Bill.findById(req.params.id);
     if (!bill) {
@@ -88,7 +88,7 @@ exports.getBillByIdInvoice = async (req, res) => {
 };
 
 // إنشاء فاتورة جديدة
-exports.createBill = async (req, res) => {
+createBill = async (req, res) => {
   const { billDate, party, vehicleNumber, type, responsible, restriction, name, count, diqPrice, usdPrice, details, note } = req.body;
   const bill = new Bill({
     billDate,
@@ -114,7 +114,7 @@ exports.createBill = async (req, res) => {
 };
 
 // عرض صفحة تعديل الفاتورة
-exports.editBillPage = async (req, res) => {
+editBillPage = async (req, res) => {
   try {
     const bill = await Bill.findById(req.params.id);
     if (!bill) {
@@ -127,7 +127,7 @@ exports.editBillPage = async (req, res) => {
 };
 
 // دالة تعديل الفاتورة
-exports.updateBill = async (req, res) => {
+updateBill = async (req, res) => {
   const { billDate, party, vehicleNumber, type, responsible, restriction, name, count, diqPrice, usdPrice, details, note } = req.body;
   const billId = req.params.id;
 
@@ -154,7 +154,7 @@ exports.updateBill = async (req, res) => {
 };
 
 // حذف الفاتورة
-exports.deleteBill = async (req, res) => {
+deleteBill = async (req, res) => {
   try {
     const bill = await Bill.findByIdAndDelete(req.params.id);
     if (!bill) {
@@ -167,29 +167,48 @@ exports.deleteBill = async (req, res) => {
 };
 
 // الحصول على عدد الفواتير المسجلة اليوم
-exports.getDailly = async (req, res) => {
+get_dailly_bill =async ()=>{
   const startOfDay = new Date();
   startOfDay.setHours(0, 0, 0, 0);
   const endOfDay = new Date();
   endOfDay.setHours(23, 59, 59, 999);
 
   try {
-    const count = await Bill.countDocuments({
-      billDate: { $gte: startOfDay, $lte: endOfDay }
+    const bill_count =await Bill.find({
+      createat: { $gte: startOfDay, $lte: endOfDay }
     });
-    res.json({ count });
+    return bill_count.length;
   } catch (error) {
     console.error('Error fetching today bills count:', error);
-    res.status(500).json({ message: 'Error fetching today bills count.' });
+    return { message: 'Error fetching today bills count.' };
   }
 };
 
 // صفحة استيراد ملف Excel
-exports.getUpload = async (req, res) => {
+getUpload = async (req, res) => {
   try {
     const bills = await Bill.find();
     res.render('bills/import', { title: 'رفع بيانات من ملف Excel', bills });
   } catch (error) {
     res.status(500).send('خطأ في جلب الفواتير');
   }
+};
+
+
+// تصدير الدالة لتصبح متاحة للاستدعاء في ملفات أخرى
+module.exports = {
+  importFromExcel,
+  getBillsType,
+  getAllBills,
+  getBillsByType,
+  getSearchDate,
+  getCreateBill,
+  getBillById,
+  getBillByIdInvoice,
+  createBill,
+  editBillPage,
+  updateBill,
+  deleteBill,
+  getUpload,
+  get_dailly_bill // إضافة الدالة هنا للتصدير
 };

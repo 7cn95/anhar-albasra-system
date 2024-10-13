@@ -12,7 +12,8 @@ const BillSchema = new mongoose.Schema({
   diqPrice: { type: Number, required: true, min: 0 }, // التأكد من أن السعر لا يكون سالبًا
   usdPrice: { type: Number, required: true, min: 0 },
   details: { type: String }, // تم جعلها اختيارية
-  note: { type: String, default: '' } // قيمة افتراضية للملاحظات
+  note: { type: String, default: '' }, // قيمة افتراضية للملاحظات
+  createat:{type:Date,default:Date.now()}
 });
 
 const Bill = mongoose.model('Bill', BillSchema);

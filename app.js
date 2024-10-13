@@ -10,6 +10,9 @@ const materialRoutes = require('./routes/materialRoutes');
 const debrisRoutes = require('./routes/debrisRoutes');
 const authRoutes = require('./routes/authRoutes');
 
+const billController = require('./controllers/billController');
+const { log } = require('console');
+
 // تحميل إعدادات البيئة
 dotenv.config();
 
@@ -36,7 +39,14 @@ app.use('/css', express.static(path.join(__dirname, 'public/css')));
 
 // الصفحة الرئيسية
 app.get('/', (req, res) => {
-  res.render('index', { title: 'Anhar Albasra System' });
+  const bill_count = billController.get_dailly_bill();
+  bill_count.then((resault)=>{
+    console.log(resault);
+    
+    res.render('index', { title: 'Anhar Albasra System' ,resault});
+  })
+  
+  
 });
 
 app.get('/invoice', (req, res) => {
