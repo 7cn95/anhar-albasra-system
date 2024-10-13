@@ -38,9 +38,9 @@ block content
 
     p(class="text-lg font-bold mt-2") ملاحظة: 
     span= bill.note || "لا توجد ملاحظات"
-
-    p(class="text-lg font-bold mt-2") رقم المركبة: 
-    span= bill.vhicle_number || "لا يوجد رقم مركبة"
+    if #{bill.type}=='الصيانة'
+      p(class="text-lg font-bold mt-2") رقم المركبة: 
+      span= bill.vhicle_number || "لا يوجد رقم مركبة"
 
   script.
       window.onload = function() {
